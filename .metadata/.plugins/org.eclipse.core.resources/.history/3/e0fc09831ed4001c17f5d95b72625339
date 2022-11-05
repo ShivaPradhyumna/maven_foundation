@@ -1,0 +1,30 @@
+package streams;
+import java.util.*;
+//import java.io.*;
+public class sample4 {
+	public static void main(String[] args) {
+		Stack<Integer> a = new Stack<Integer>();
+		char[] b = Arrays.toString("5,-2,4,C,D,9,+,+".split(",")).toCharArray();
+		for(int i=0;i<b.length;i++)
+		{
+			if(Math.abs(b[i]-'0')<=9) a.push(b[i]-'0');
+			else if(b[i] == 'C') a.pop();
+			else if(b[i] == 'D') {
+				int c = a.pop();
+				a.push(c*2);
+			}
+			else {
+				int d = a.pop();
+				int e = a.pop();
+				a.push(d+e);
+			}
+		}
+		int g = 0;
+		while(!a.isEmpty())
+		{
+			g+=a.peek();
+			a.pop();
+		}
+		System.out.println(g);
+	}
+}
